@@ -21,6 +21,10 @@
   display: none;
 }
 
+.mobile .cont {
+  padding: 10px;
+}
+
 body {
   background: #222222;
 }
