@@ -23,6 +23,7 @@
 
 .mobile .border {
   margin: 3px 10px;
+  width: 100%;
 }
 
 body {
@@ -53,7 +54,7 @@ canvas {
   border-image-slice: 1;
   background: #121212;
   padding-top: 25px;
-  padding-bottom: 25px;
+  padding-bottom: 5px;
 }
 
 .flex {
