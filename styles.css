@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --usernameEffects: url('sparkle_red.gif');
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+
+.button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 13px;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border: 2px solid #333;
+  transition: .3s;
+  z-index: 1;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #ff0000;
+  }
+}
+
+.play {
+  background: rgba(0, 0, 0, .5);
+  border: none;
+  width: 100vw;
+  height: 100vh;
+  font-family: mono;
+  font-size: 1.2em;
+  color: #fff;
+  backdrop-filter: blur(5px);
+  -webkit-animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  transition: .3s;
+  z-index: 99;
+
+  &:hover {
+    backdrop-filter: blur(15px);
+  }
+}
+
+.play p:after {
+  content: 'TAP TO ENTER';
+}
+
+.volume {
+  top: 20px;
+  left: 20px;
+}
+
+#volume-slider {
+  margin: 20px 0px 0px 20px;
+  padding: 10px 15px;
+  width: 200px;
+  height: 32px;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 2px solid #333;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  border-radius: 15px;
+  transition: .3s;
+}
+
+#volume-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: white;
+  border-radius: 5px;
+}
+
+#volume-slider::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: white;
+  border-radius: 5px;
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  margin-top: -6px;
+}
+
+#volume-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
+#volume-slider:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-color: #ff0000;
+}
+
+#volume-slider:hover::-webkit-slider-runnable-track {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+#volume-slider:hover::-moz-range-track {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  height: fit-content;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  max-width: 600px;
+}
+
+.tart {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 15px;
+  margin: 20px;
+  padding: 20px 0px;
+  height: fit-content;
+  color: #fff;
+
+  & header {
+    font-family: Poppins;
+    color: WHITE;
+    filter: drop-shadow(0px 0px 16.5px white);
+    width: fit-content;
+    margin: auto;
+    padding: 0px 5px;
+
+    & h1 {
+      background-image: var(--usernameEffects);
+    }
+  }
+
+  & main {
+    text-align: center;
+    padding: 25px 0px;
+  }
+
+  & footer {
+    height: 64px;
+    line-height: 64px;
+    padding: 25px 0px 0px 0px;
+
+    svg {
+      height: 32px;
+      width: 32px;
+      fill: #000;
+      filter: drop-shadow(0px 0px 16.5px white);
+      transition: .3s;
+
+      &:hover {
+        height: 38px;
+        width: 38px;
+      }
+    }
+  }
+}
+
+img {
+  margin: auto;
+  height: 100px;
+  width: 60px;
+  display: block;
+}
+
+@media (min-width: 800px) {
+  .play p:after {
+    content: 'CLICK TO ENTER';
+  }
+}
+
+@media (max-width: 800px) {
+  #volume-slider {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+@-webkit-keyframes focus-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(300px);
+    transform: translateZ(300px);
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(12px);
+    transform: translateZ(12px);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes focus-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(300px);
+    transform: translateZ(300px);
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(12px);
+    transform: translateZ(12px);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
