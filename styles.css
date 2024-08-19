@@ -166,7 +166,7 @@ video {
   & header {
     font-family: Poppins;
     color: WHITE;
-    filter: drop-shadow(0px 0px 16.5px white);
+    filter: drop-shadow(0px 0px 5px white);
     width: fit-content;
     margin: auto;
     padding: 0px 5px;
@@ -209,7 +209,6 @@ img {
   width: 60px;
   display: block;
   padding: 10px;
-  filter: drop-shadow(0px 0px 5px white);
 }
 
 @media (min-width: 800px) {
