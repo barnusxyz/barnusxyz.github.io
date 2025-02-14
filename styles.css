@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --usernameEffects: url('sparkle_red.gif');
+  --usernameEffects: url('sparkle_blue.gif');
 }
 
 body,
@@ -38,18 +38,18 @@ video {
 
 .button {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 10px 13px;
+  top: 10px;
+  right: 10px;
+  padding: 3px 6px;
   font-size: 16px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  border-radius: 5px;
   color: white;
   border: none;
   cursor: pointer;
-  border: 2px solid #333;
   transition: .3s;
   z-index: 1;
+  opacity: 0;
+  pointer-events: none;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.6);
@@ -85,62 +85,74 @@ video {
   left: 20px;
 }
 
-#volume-slider {
-  margin: 20px 0px 0px 20px;
-  padding: 10px 15px;
-  width: 200px;
-  height: 32px;
-  -webkit-appearance: none;
-  appearance: none;
-  border: 2px solid #333;
-  background-color: rgba(0, 0, 0, 0.5);
+.slider-cont {
+  width: fit-content;
+  margin: 10px auto;
+}
+
+.slider {
+  /* slider */
+  --slider-width: 100%;
+  --slider-height: 6px;
+  --slider-bg: rgb(82, 82, 82);
+  --slider-border-radius: 999px;
+  /* level */
+  --level-color: #fff;
+  --level-transition-duration: .1s;
+  /* icon */
+  --icon-margin: 15px;
+  --icon-color: var(--slider-bg);
+  --icon-size: 25px;
+}
+
+.slider {
   cursor: pointer;
-  border-radius: 15px;
-  transition: .3s;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-#volume-slider::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  background: white;
-  border-radius: 5px;
+.slider .volume {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: var(--icon-margin);
+  color: var(--icon-color);
+  width: var(--icon-size);
+  height: auto;
 }
 
-#volume-slider::-moz-range-track {
-  width: 100%;
-  height: 8px;
-  background: white;
-  border-radius: 5px;
-}
-
-#volume-slider::-webkit-slider-thumb {
+.slider .level {
   -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
-  background-color: #ff0000;
-  border-radius: 50%;
-  margin-top: -6px;
+  width: var(--slider-width);
+  height: var(--slider-height);
+  background: var(--slider-bg);
+  overflow: hidden;
+  border-radius: var(--slider-border-radius);
+  -webkit-transition: height var(--level-transition-duration);
+  -o-transition: height var(--level-transition-duration);
+  transition: height var(--level-transition-duration);
+  cursor: inherit;
 }
 
-#volume-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background-color: #ff0000;
-  border-radius: 50%;
+.slider .level::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+  -webkit-box-shadow: -200px 0 0 200px var(--level-color);
+  box-shadow: -200px 0 0 200px var(--level-color);
 }
 
-#volume-slider:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-  border-color: #ff0000;
-}
-
-#volume-slider:hover::-webkit-slider-runnable-track {
-  background: rgba(255, 255, 255, 0.7);
-}
-
-#volume-slider:hover::-moz-range-track {
-  background: rgba(255, 255, 255, 0.7);
+.slider:hover .level {
+  height: calc(var(--slider-height) * 2);
 }
 
 .container {
@@ -188,12 +200,10 @@ video {
     overflow: hididen;
 
     svg {
-      height: 32px;
       width: 32px;
       fill: #000;
       filter: drop-shadow(0px 0px 16.5px white);
       transition: .3s;
-      padding-bottom: 2000px;
 
       &:hover {
         height: 38px;
@@ -218,9 +228,14 @@ img {
 }
 
 @media (max-width: 800px) {
-  #volume-slider {
+  .slider {
     opacity: 0 !important;
     pointer-events: none !important;
+  }
+
+  .button {
+    opacity: 1 !important;
+    pointer-events: all !important;
   }
 }
 
